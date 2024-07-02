@@ -1,5 +1,5 @@
 # FHIR Playground
-** A Webapp to explore and play with FHIR resources **
+> A Webapp to explore and play with FHIR resources
 
 # Stack
 - React
