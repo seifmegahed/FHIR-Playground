@@ -17,7 +17,7 @@
 - [x] Create table to view Practitioners
 - [x] Create Form Page to create new Practitioner
 - [x] Create Practitioner Page to view Practitioner
-- [ ] Display patients in the care of the practitioner
+- [x] Display patients in the care of the practitioner
 - [ ] Create Form Page to create new Medication
 - [ ] Create table to view Medications
 - [ ] Create Medication Page to view Medication

@@ -1,8 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+
 import NavBar from "./components/NavBar";
 import PageWrapper from "./components/PageWrapper";
 import NotFoundPage from "./pages/NotFound";
-import HomePage from "./pages/Home";
 import PatientsPage from "./pages/Patients";
 import NewPatientPage from "./pages/Patients/New";
 import PatientPage from "./pages/Patients/Patient";
@@ -17,7 +17,7 @@ function App() {
       <PageWrapper>
         <Routes>
           <Route path="/*" element={<NotFoundPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Navigate to="/patients" />} />
           <Route path="/practitioners" element={<PractitionersPage />} />
           <Route path="/practitioners/new" element={<NewPractitionerPage />} />
           <Route path="/practitioners/:id" element={<PractitionerPage />} />
