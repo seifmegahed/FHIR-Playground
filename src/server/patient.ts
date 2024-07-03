@@ -27,6 +27,23 @@ export async function getPatient(id: string): Promise<Patient> {
   }).then((res) => res.json());
 }
 
+export async function getPatientsByPractitioner(id: string) {
+  return await fetch(`https://spark.incendi.no/fhir/Patient?general-practitioner=${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/fhir+json",
+      Accept: "application/fhir+json",
+    },
+  }).then((res) => res.json())
+  .then((data) => ({
+    total: data.total,
+    patients: data.entry.map(
+      (entry: { resource: Patient }) => entry.resource
+    ),
+  }));
+}
+
+
 export async function createPatient(patient: Patient) {
   return await fetch("https://spark.incendi.no/fhir/Patient", {
     method: "POST",

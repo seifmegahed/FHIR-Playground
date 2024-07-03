@@ -1,4 +1,24 @@
 import { Practitioner } from "fhir/r4";
+import { organizationId } from "./organization";
+
+export async function createPractitioner(practitioner: Practitioner) {
+  return await fetch("https://spark.incendi.no/fhir/Practitioner", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/fhir+json",
+      Accept: "application/fhir+json",
+    },
+    body: JSON.stringify({
+      ...practitioner,
+      name: [
+        { ...practitioner!.name![0] },
+        {
+          family: organizationId,
+        },
+      ],
+    } as Practitioner),
+  });
+}
 
 export async function getPractitioner(id: string): Promise<Practitioner> {
   return await fetch(`https://spark.incendi.no/fhir/Practitioner/${id}`, {
@@ -31,10 +51,10 @@ export async function getPractitioners(
 }> {
   const _offset = page * count;
   return await fetch(
-    // `https://spark.incendi.no/fhir/Practitioner?_count=${count}&_offset=${_offset}&_sort=name&_sortDirection=asc&organization=${organizationId}`,
-    `https://spark.incendi.no/fhir/Practitioner?_count=${count}&_offset=${_offset}&_sort=name&_sortDirection=asc`,
+    `https://spark.incendi.no/fhir/Practitioner?_count=${count}&_offset=${_offset}&_sort=name&_sortDirection=asc&name=${organizationId}`,
     {
       method: "GET",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/fhir+json",
         Accept: "application/fhir+json",

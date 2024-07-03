@@ -6,6 +6,8 @@ import HomePage from "./pages/Home";
 import PatientsPage from "./pages/Patients";
 import NewPatientPage from "./pages/Patients/New";
 import PatientPage from "./pages/Patients/Patient";
+import PractitionersPage from "./pages/Practitioner";
+import NewPractitionerPage from "./pages/Practitioner/New";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/*" element={<NotFoundPage />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/practitioners" element={<PractitionersPage />} />
+          <Route path="/practitioners/new" element={<NewPractitionerPage />} />
           <Route path="/patients" element={<PatientsPage />} />
           <Route path="/patients/new" element={<NewPatientPage />} />
           <Route path="/patients/:id" element={<PatientPage />} />

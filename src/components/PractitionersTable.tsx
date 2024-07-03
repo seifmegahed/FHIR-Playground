@@ -6,7 +6,7 @@ export default function PractitionersTable(props: {
   loading: boolean;
   pageIndex: number;
   itemsPerPage: number;
-  selectedPractitioner: Practitioner | null;
+  selectedPractitioner?: Practitioner | null;
   onClick: (practitioner: Practitioner) => void;
 }) {
   const {
