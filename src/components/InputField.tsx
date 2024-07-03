@@ -2,7 +2,7 @@ export default function InputField(props: {
   label: string;
   value: string;
   required?: boolean;
-  onchange: (value: string) => void;
+  onChange: (value: string) => void;
   textField?: boolean;
 }) {
   return (
@@ -12,7 +12,7 @@ export default function InputField(props: {
         <textarea
           required={props.required}
           value={props.value}
-          onChange={(e) => props.onchange(e.target.value)}
+          onChange={(e) => props.onChange(e.target.value)}
           placeholder={props.label}
           className="peer w-full p-3 outline-gray-300 outline-1 outline rounded-xl resize-none focus:placeholder-white"
           rows={5}
@@ -21,7 +21,7 @@ export default function InputField(props: {
         <input
           required={props.required}
           value={props.value}
-          onChange={(e) => props.onchange(e.target.value)}
+          onChange={(e) => props.onChange(e.target.value)}
           type="text"
           placeholder={props.label}
           className="peer w-full h-12 p-3 outline-gray-300 invalid:outline-red-400 outline-1 outline rounded-xl focus:placeholder-white"

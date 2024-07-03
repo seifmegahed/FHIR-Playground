@@ -32,7 +32,7 @@ export default function FormFields(
             label={field.label}
             value={props.values[field.name]}
             required={field.required}
-            onchange={(value) => props.onChange(field.name, value)}
+            onChange={(value) => props.onChange(field.name, value)}
           />
         ) : (
           <SelectField
@@ -41,7 +41,7 @@ export default function FormFields(
             value={props.values[field.name]}
             options={field.options}
             required={field.required}
-            onchange={(value) => props.onChange(field.name, value)}
+            onChange={(value) => props.onChange(field.name, value)}
           />
         )
       )}
