@@ -1,11 +1,22 @@
 import { Patient } from "fhir/r4";
 import { organizationId } from "./organization";
 
+export async function getPatient(id: string): Promise<Patient> {
+  return await fetch(`https://spark.incendi.no/fhir/Patient/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/fhir+json",
+      Accept: "application/fhir+json",
+    },
+  }).then((res) => res.json());
+}
+
 export async function createPatient(patient: Patient) {
   return await fetch("https://spark.incendi.no/fhir/Patient", {
     method: "POST",
     headers: {
       "Content-Type": "application/fhir+json",
+      Accept: "application/fhir+json",
     },
     body: JSON.stringify({
       ...patient,
@@ -28,6 +39,7 @@ export async function getPatients(
       method: "GET",
       headers: {
         "Content-Type": "application/fhir+json",
+        Accept: "application/fhir+json",
       },
     }
   )
