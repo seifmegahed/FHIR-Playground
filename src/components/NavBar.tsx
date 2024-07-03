@@ -28,6 +28,7 @@ export default function NavBar() {
       <div className="flex items-center h-full">
         {links.map((link) => (
           <div
+            key={link.name}
             className="flex h-full items-center justify-center p-5 hover:bg-white/50 cursor-pointer"
             onClick={() => navigate(link.path)}
           >

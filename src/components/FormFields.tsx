@@ -20,8 +20,8 @@ export default function FormFields(
   props: {
     fields: (TextFieldType | SelectFieldType)[];
     onChange: (name: string, value: string) => void;
+    values: { [key: string]: string }
   },
-  values: { [key: string]: string }
 ) {
   return (
     <>
@@ -30,7 +30,7 @@ export default function FormFields(
           <InputField
             key={field.name}
             label={field.label}
-            value={values[field.name]}
+            value={props.values[field.name]}
             required={field.required}
             onchange={(value) => props.onChange(field.name, value)}
           />
@@ -38,8 +38,9 @@ export default function FormFields(
           <SelectField
             key={field.name}
             label={field.label}
-            value={values[field.name]}
+            value={props.values[field.name]}
             options={field.options}
+            required={field.required}
             onchange={(value) => props.onChange(field.name, value)}
           />
         )

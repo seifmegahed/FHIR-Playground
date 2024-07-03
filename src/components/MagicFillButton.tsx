@@ -9,6 +9,7 @@ export default function MagicFillButton(props: {
       className=" hover:bg-gray-200 p-4 rounded-full transition-all duration-300 ease-in-out"
       onClick={props.onClick}
       color="primary"
+      type="button"
       disabled={props.disabled}
     >
       <MagicIcon />

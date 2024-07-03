@@ -1,4 +1,18 @@
 import { Patient } from "fhir/r4";
+import { organizationId } from "./organization";
+
+export async function createPatient(patient: Patient) {
+  return await fetch("https://spark.incendi.no/fhir/Patient", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/fhir+json",
+    },
+    body: JSON.stringify({
+      ...patient,
+      managingOrganization: { reference: `Organization/${organizationId}` },
+    }),
+  });
+}
 
 export async function getPatients(
   count: number,
@@ -9,7 +23,7 @@ export async function getPatients(
 }> {
   const _offset = page * count;
   return await fetch(
-    `https://spark.incendi.no/fhir/Patient?_count=${count}&_offset=${_offset}`,
+    `https://spark.incendi.no/fhir/Patient?_count=${count}&_offset=${_offset}&_sort=name&_sortDirection=asc&organization=${organizationId}`,
     {
       method: "GET",
       headers: {
