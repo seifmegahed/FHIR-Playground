@@ -8,7 +8,7 @@ export default function Pagination(props: PaginationProps) {
   const { pageIndex, numPages, onPageChange } = props;
   const maxPageButtons = 8;
   const pageButtons = Array.from({ length: numPages }, (_, i) => i + 1);
-  if (numPages <= maxPageButtons)
+  if (numPages < maxPageButtons)
     return pageButtons.map((page) => (
       <PaginationButton
         key={"page-" + page}
