@@ -63,7 +63,7 @@ function PatientsTable(props: { patients: Patient[]; loading: boolean }) {
           <th>Gender</th>
         </tr>
       </thead>
-      <tbody className="relative">
+      <tbody className="relative h-96">
         {patients.map((patient, index) => (
           <tr
             className="border-t border-gray-200 hover:bg-gray-100 h-12 cursor-pointer"
