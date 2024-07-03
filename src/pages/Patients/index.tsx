@@ -5,6 +5,7 @@ import SectionTitle from "../../components/SectionTitle";
 import { getPatients } from "../../server/patient";
 import Loader from "../../components/Loader";
 import Pagination from "../../components/pagination/";
+import { useNavigate } from "react-router-dom";
 
 const itemsPerPage = 10;
 
@@ -13,6 +14,8 @@ export default function PatientsPage() {
   const [pageIndex, setPageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [numPages, setNumPages] = useState(1);
+  const navigate = useNavigate();
+
   useEffect(() => {
     setLoading(true);
     const getData = async () => {
@@ -23,9 +26,18 @@ export default function PatientsPage() {
     };
     getData();
   }, [pageIndex]);
+  
   return (
     <>
       <SectionTitle title="Patients" />
+      <div className="flex justify-end w-full">
+        <button
+          className="bg-blue-500 hover:bg-blue-300 text-white font-bold py-2 px-4 mb-4 rounded-lg"
+          onClick={() => navigate("/patients/new")}
+        >
+          Add Patient
+        </button>
+      </div>
       <PatientsTable patients={patients} loading={loading} />
       <div className="flex-grow p-5 flex gap-2">
         <Pagination
