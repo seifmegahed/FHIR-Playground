@@ -17,6 +17,7 @@ export default function PaginationEnd(props: PaginationInnerProps) {
         .slice(numPages - maxPageButtons + 2, numPages)
         .map((page) => (
           <PaginationButton
+            key={"page-" + page}
             value={page}
             isActive={pageIndex === page - 1}
             onClick={() => onPageChange(page - 1)}

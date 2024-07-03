@@ -14,6 +14,7 @@ export default function PaginationMid(props: PaginationInnerProps) {
       <PaginationSeparator />
       {pageButtons.slice(pageIndex - 2, pageIndex + 3).map((page) => (
         <PaginationButton
+          key={"page-" + page}
           value={page}
           isActive={pageIndex === page - 1}
           onClick={() => onPageChange(page - 1)}

@@ -10,6 +10,7 @@ export default function PaginationStart(props: PaginationInnerProps) {
     <>
       {pageButtons.slice(0, maxPageButtons - 2).map((page) => (
         <PaginationButton
+          key={"page-" + page}
           value={page}
           isActive={pageIndex === page - 1}
           onClick={() => onPageChange(page - 1)}
