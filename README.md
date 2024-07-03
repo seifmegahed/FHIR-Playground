@@ -9,9 +9,9 @@
 # TODO
 [x] Create table to view Patients
 [x] Add Pagination
-[ ] Create Form Page to create new Patient
+[x] Create Form Page to create new Patient
+[x] Make Form reusable 
 [ ] Make table reusable
-[ ] Make Form reusable
 [ ] Create Patient Page to view Patient
 [ ] Create Form Page to create new Practitioner
 [ ] Create table to view Practitioners

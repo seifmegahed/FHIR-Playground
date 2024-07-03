@@ -8,6 +8,7 @@ import Loader from "../../../components/Loader";
 
 import { newPatientFields } from "./newPatientFields";
 import { createPatient } from "../../../server/patient";
+import { useNavigate } from "react-router-dom";
 
 const patientInitialState = newPatientFields.reduce(
   (acc: { [key: string]: string }, field) => {
@@ -20,6 +21,7 @@ const patientInitialState = newPatientFields.reduce(
 export default function NewPatientPage() {
   const [patient, setPatient] = useState(patientInitialState);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,10 +59,9 @@ export default function NewPatientPage() {
         ],
       })
         .then((res) => {
-          console.log(
-            "Successfully created patient",
-            res.json().then((data) => data)
-          );
+            res.json().then((data) => navigate(`/patients/${data.id}`)) 
+            // console.log("Successfully created patient",  res.json());
+            // setPatient(patientInitialState);
         })
         .catch((err) => {
           console.error("Error creating patient", err);

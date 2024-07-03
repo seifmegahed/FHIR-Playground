@@ -1,6 +1,6 @@
 
 export const genderOptions = ["Male", "Female", "Other"];
-export const yearOptions = Array.from({ length: 100 }, (_, i) => String(i + 1950));
+export const yearOptions = Array.from({ length: 75 }, (_, i) => String(i + 1950));
 export const monthOptions = [
   "January",
   "February",
