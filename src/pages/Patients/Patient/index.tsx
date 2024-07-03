@@ -6,8 +6,8 @@ import { getPatient } from "../../../server/patient";
 
 import Loader from "../../../components/Loader";
 import SectionTitle from "../../../components/SectionTitle";
+import PersonGeneralDetailsSection from "../../../components/PersonGeneralDetailsSection";
 import GeneralPractitionerUpdateSection from "./GeneralPractitionerUpdateSection";
-import PatientGeneralDetailsSection from "./PatientGeneralDetailsSection";
 import { getPractitionerByReference } from "../../../server/practitioner";
 
 export default function PatientPage() {
@@ -26,7 +26,8 @@ export default function PatientPage() {
   useEffect(() => {
     if (
       patient !== undefined &&
-      patient!.generalPractitioner![0].reference !== undefined
+      patient!.generalPractitioner! !== undefined
+      && patient!.generalPractitioner![0].reference !== undefined
     )
       getPractitionerByReference(
         patient!.generalPractitioner![0].reference as string
@@ -42,7 +43,7 @@ export default function PatientPage() {
       <SectionTitle title="Patient" />
       <div className="flex-grow w-full bg-white m-10 rounded-2xl p-10">
         <div className="grid md:grid-cols-2 gap-4 w-full">
-          <PatientGeneralDetailsSection patient={patient} />
+          <PersonGeneralDetailsSection person={patient} />
           <div className="flex flex-col gap-2">
             <p>
               <strong>General Practitioner: </strong>

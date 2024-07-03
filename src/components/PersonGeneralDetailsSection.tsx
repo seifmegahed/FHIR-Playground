@@ -1,42 +1,50 @@
-import { Patient } from "fhir/r4";
+import { Patient, Person, Practitioner } from "fhir/r4";
 
-export default function PatientGeneralDetailsSection(props: {patient: Patient}) {
-  const { patient } = props;
+export default function PersonGeneralDetailsSection(props: {
+  person: Person | Patient | Practitioner;
+  prefix?: string;
+}) {
+  const { person, prefix } = props;
   return (
     <>
       <div className="col-span-2">
         <div className="flex justify-between text-2xl font-bold mb-3">
-          <h1>{patient.name![0].given![0] + " " + patient.name![0].family}</h1>
-          <h1>{patient.address![0].city}</h1>
+          <h1>
+            {(prefix ? prefix + " " : "") +
+              person.name![0].given![0] +
+              " " +
+              person.name![0].family}
+          </h1>
+          <h1>{person.address![0].city}</h1>
         </div>
         <hr></hr>
       </div>
       <div className="flex flex-col gap-2">
         <p>
           <strong>ID: </strong>
-          {patient.id}
+          {person.id}
         </p>
         <p>
           <strong>Date of Birth: </strong>
-          {patient.birthDate}
+          {person.birthDate}
         </p>
         <p>
           <strong>Gender: </strong>
-          {patient.gender}
+          {person.gender}
         </p>
       </div>
       <div className="flex flex-col gap-2">
         <p>
           <strong>Address: </strong>
-          {patient.address![0].city + ", " + patient.address![0].country}
+          {person.address![0].city + ", " + person.address![0].country}
         </p>
         <p>
           <strong>Phone Number: </strong>
-          {patient.telecom![0].value}
+          {person.telecom![0].value}
         </p>
         <p>
           <strong>Email: </strong>
-          {patient.telecom![1].value}
+          {person.telecom![1].value}
         </p>
       </div>
     </>

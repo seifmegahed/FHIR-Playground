@@ -9,10 +9,10 @@ const links = [
     name: "Practitioners",
     path: "/practitioners",
   },
-  {
-    name: "Medicine",
-    path: "/medicine",
-  },
+  // {
+  //   name: "Medicine",
+  //   path: "/medicine",
+  // },
 ];
 
 export default function NavBar() {

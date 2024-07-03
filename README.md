@@ -14,13 +14,14 @@
 - [x] Make Form reusable 
 - [x] Create Patient Page to view Patient 
 - [x] Add GP from Practitioner list to Patient
-- [ ] Make table reusable
-- [ ] Create Form Page to create new Practitioner
-- [ ] Create table to view Practitioners
-- [ ] Create Practitioner Page to view Practitioner
+- [x] Create table to view Practitioners
+- [x] Create Form Page to create new Practitioner
+- [x] Create Practitioner Page to view Practitioner
+- [ ] Display patients in the care of the practitioner
 - [ ] Create Form Page to create new Medication
 - [ ] Create table to view Medications
 - [ ] Create Medication Page to view Medication
+- [ ] Make table reusable
 - [ ] Add Administer Medication to Patient Page
 - [ ] Add Search to table pages
 - [ ] Add Sort to table pages
