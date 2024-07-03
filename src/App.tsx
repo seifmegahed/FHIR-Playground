@@ -4,6 +4,7 @@ import PageWrapper from "./components/PageWrapper";
 import NotFoundPage from "./pages/NotFound";
 import HomePage from "./pages/Home";
 import PatientsPage from "./pages/Patients";
+import NewPatientPage from "./pages/Patients/New";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/*" element={<NotFoundPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/patients" element={<PatientsPage />} />
+          <Route path="/patients/new" element={<NewPatientPage />} />
         </Routes>
       </PageWrapper>
     </div>

@@ -1,7 +1,6 @@
 export default function InputField(props: {
   label: string;
   value: string;
-  error: boolean;
   required?: boolean;
   onchange: (value: string) => void;
   textField?: boolean;
@@ -15,7 +14,7 @@ export default function InputField(props: {
           value={props.value}
           onChange={(e) => props.onchange(e.target.value)}
           placeholder={props.label}
-          className="peer w-full p-3 focus:outline-none rounded-xl resize-none focus:placeholder-white"
+          className="peer w-full p-3 outline-gray-300 outline-1 outline rounded-xl resize-none focus:placeholder-white"
           rows={5}
         />
       ) : (
@@ -25,7 +24,7 @@ export default function InputField(props: {
           onChange={(e) => props.onchange(e.target.value)}
           type="text"
           placeholder={props.label}
-          className="peer w-full h-12 p-3 focus:outline-none outline-none rounded-xl focus:placeholder-white"
+          className="peer w-full h-12 p-3 outline-gray-300 invalid:outline-red-400 outline-1 outline rounded-xl focus:placeholder-white"
         />
       )}
       <div
@@ -37,7 +36,6 @@ export default function InputField(props: {
       >
         {props.label}
       </div>
-      <div className={`text-xs px-2 text-red-500 ${!props.error && "invisible"}`}>Required</div>  
     </div>
   );
 }
