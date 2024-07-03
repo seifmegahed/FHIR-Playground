@@ -26,7 +26,7 @@ export default function PatientsPage() {
     };
     getData();
   }, [pageIndex]);
-  
+
   return (
     <>
       <SectionTitle title="Patients" />
@@ -38,7 +38,12 @@ export default function PatientsPage() {
           Add Patient
         </button>
       </div>
-      <PatientsTable patients={patients} loading={loading} />
+      <PatientsTable
+        patients={patients}
+        loading={loading}
+        pageIndex={pageIndex}
+        itemsPerPage={itemsPerPage}
+      />
       <div className="flex-grow p-5 flex gap-2">
         <Pagination
           pageIndex={pageIndex}
@@ -50,8 +55,13 @@ export default function PatientsPage() {
   );
 }
 
-function PatientsTable(props: { patients: Patient[]; loading: boolean }) {
-  const { patients, loading } = props;
+function PatientsTable(props: {
+  patients: Patient[];
+  loading: boolean;
+  pageIndex: number;
+  itemsPerPage: number;
+}) {
+  const { patients, loading, pageIndex, itemsPerPage } = props;
   return (
     <table className="w-full table-auto bg-white shadow-lg rounded-xl overflow-hidden">
       <thead className="text-left text-lg h-16 bg-blue-100">
@@ -63,20 +73,31 @@ function PatientsTable(props: { patients: Patient[]; loading: boolean }) {
           <th>Gender</th>
         </tr>
       </thead>
-      <tbody className="relative h-96">
-        {patients.map((patient, index) => (
-          <tr
-            className="border-t border-gray-200 hover:bg-gray-100 h-12 cursor-pointer"
-            key={patient.id}
-          >
-            <td className="text-center">{index + 1}</td>
-            <td>{patient.name?.[0]?.family || ""}</td>
-            <td>{patient.name?.[0]?.given?.[0] || ""}</td>
-            <td>{patient.birthDate || ""}</td>
-            <td>{patient.gender || ""}</td>
+      <tbody className="relative">
+        {!loading ? (
+          <>
+            {patients.map((patient, index) => (
+              <tr
+                key={patient.id}
+                className="border-t border-gray-200 hover:bg-gray-100 h-12 cursor-pointer"
+              >
+                <td className="text-center">
+                  {index + 1 + pageIndex * itemsPerPage}
+                </td>
+                <td>{patient.name?.[0]?.family || ""}</td>
+                <td>{patient.name?.[0]?.given?.[0] || ""}</td>
+                <td>{patient.birthDate || ""}</td>
+                <td>{patient.gender || ""}</td>
+              </tr>
+            ))}
+          </>
+        ) : (
+          <tr>
+            <td className="h-96">
+              <Loader />
+            </td>
           </tr>
-        ))}
-        {loading && <Loader />}
+        )}
       </tbody>
     </table>
   );
